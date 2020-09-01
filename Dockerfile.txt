@@ -1,0 +1,18 @@
+# Start from a core stack version
+FROM jupyter/scipy-notebook
+# Install from requirements.txt file
+COPY requirements.txt /tmp/
+#copy over relevant files
+#COPY Abuse.py /home/jovyan/work
+#COPY ssl_blacklist.csv /home/jovyan/work
+#COPY Test.ipynb /home/jovyan/work
+RUN cd /home/jovyan/work
+RUN git clone https://gitsduran1986:Sh0relodge!@github.com/gitsduran1986/Certs.git 
+RUN cd /home/
+COPY jupyter_notebook_config.py /etc/jupyter/
+RUN pip install --requirement /tmp/requirements.txt && \
+    fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER
+RUN jupyter contrib nbextension install --user
+RUN jupyter nbextensions_configurator enable --user
+RUN jupyter nbextension enable collapsible_headings/main

@@ -1,0 +1,6 @@
+pandas
+missingno
+plotly
+ipywidgets==7.5.1
+jupyter_contrib_nbextensions
+boto3
