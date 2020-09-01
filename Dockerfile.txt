@@ -2,12 +2,8 @@
 FROM jupyter/scipy-notebook
 # Install from requirements.txt file
 COPY requirements.txt /tmp/
-#copy over relevant files
-#COPY Abuse.py /home/jovyan/work
-#COPY ssl_blacklist.csv /home/jovyan/work
-#COPY Test.ipynb /home/jovyan/work
 RUN cd /home/jovyan/work
-RUN git clone https://gitsduran1986:Sh0relodge!@github.com/gitsduran1986/Certs.git 
+RUN git clone https://github.com/gitsduran1986/General_Notebook.git
 RUN cd /home/
 COPY jupyter_notebook_config.py /etc/jupyter/
 RUN pip install --requirement /tmp/requirements.txt && \
